@@ -1,11 +1,13 @@
+import { GameSaveDescType } from "@thetinyspark/paradox/dist/core/model/types/GameSaveDescType";
+
 const timeStamp = Date.now();
 
-export const data =  {
+export const data:GameSaveDescType =  {
     cities: [
         {
             id: timeStamp, 
             name: "Mars", 
-            buildings:[{tplID:1, level:1}],
+            buildings:[{tplID:1, level:1, id:1}],
             wallet: [
                 {
                     resourceID: 1, 
@@ -28,11 +30,13 @@ export const data =  {
                     "level": 1,
                     "cost": [],
                     "prod": [
-                        { "resourceID": 2, "amount": 1 }
+                        { "resourceID": 2, "amount": 1 },
+
                     ],
                     "cons": [
-                        { "resourceID": 1, "amount": 1 }
-                    ]
+                        { "resourceID": 1, "amount": 1 },
+                    ],
+                    "sold":[]
                 }
             ]
         },
@@ -48,7 +52,8 @@ export const data =  {
                     "prod": [
                         { "resourceID": 1, "amount": 2 }
                     ],
-                    "cons": []
+                    "cons": [],
+                    "sold":[]
                 },
                 {
                     "level": 2,
@@ -59,7 +64,9 @@ export const data =  {
                     "prod": [
                         { "resourceID": 1, "amount": 10 }
                     ],
-                    "cons": []
+                    "cons": [],
+                    "sold":[]
+
                 }
             ]
         },
@@ -78,7 +85,9 @@ export const data =  {
                     ],
                     "cons": [
                         { "resourceID": 1, "amount": 4 }
-                    ]
+                    ],
+                    "sold":[]
+
                 }
             ]
         },
@@ -98,9 +107,36 @@ export const data =  {
                     "cons": [
                         { "resourceID": 1, "amount": 5 },
                         { "resourceID": 2, "amount": 10 }
-                    ]
+                    ],
+                    "sold":[]
                 }
             ]
-        }
+        },
+        {
+            "id": 100,
+            "name": "Cratère",
+            "levels": [
+                {
+                    "level": 1,
+                    "cost": [],
+                    "prod": [],
+                    "cons": [],
+                    "sold":[]
+                }
+            ]
+        },
+        {
+            "id": 101,
+            "name": "Montagnes / Collines",
+            "levels": [
+                {
+                    "level": 1,
+                    "cost": [],
+                    "prod": [],
+                    "cons": [],
+                    "sold":[]
+                }
+            ]
+        },
     ]
 }

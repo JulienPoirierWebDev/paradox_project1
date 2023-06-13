@@ -1,0 +1,20 @@
+.container * {
+    animation: render 1s ease-in-out;
+    animation-iteration-count: infinite;
+
+}
+
+h1 {
+    animation: render 0.5s ease-in-out;
+}
+
+
+@keyframes render {
+    0% {
+        background-color: red;
+    }
+
+    100% {
+        background-color: white;
+    }
+}

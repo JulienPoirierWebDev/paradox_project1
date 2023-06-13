@@ -1,15 +1,19 @@
-import { Ressource, Wallet } from "../type";
+import Resource from "@thetinyspark/paradox/dist/core/model/schema/resources/Resource";
 import RessourceQuantity from "./RessourceQuantity";
+import Quantity from "@thetinyspark/paradox/dist/core/model/schema/resources/Quantity";
 
-export default function RessourceList({ressources, wallet} : {ressources: Ressource[], wallet: Wallet}) {
+export default function RessourceList({resources, wallet} : {resources: Resource[], wallet: Quantity[] | undefined}) {
     
     const ressourceQuantityArr: JSX.Element[] = [];
 
-    ressources.map((ressource) => {
-        const ressourceInWallet = wallet.find((ressourceQuantity) => ressourceQuantity.id === ressource.id);
-        if (ressourceInWallet) {
-            ressourceQuantityArr.push(<RessourceQuantity key={ressource.id} name={ressource.name} amount={ressourceInWallet.amount}/>);
-        }
+    resources.map( (resource) => {
+
+        wallet?.map( (ressourceQuantity) => {
+            if (ressourceQuantity.resourceID === resource.id) {
+                ressourceQuantityArr.push(<RessourceQuantity key={resource.id} name={resource.name} amount={ressourceQuantity.amount}/>);
+            }
+        })
+        
     })
 
     return (
