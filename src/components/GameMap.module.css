@@ -1,0 +1,17 @@
+.map {
+  display: flex;
+  overflow: scroll;
+}
+
+.cell {
+  width: 20px;
+  aspect-ratio: 1;
+  border: 2px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.empty {
+  background-color: chocolate;
+}
