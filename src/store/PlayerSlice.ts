@@ -2,7 +2,7 @@ import { engine } from "@thetinyspark/paradox";
 import City from "@thetinyspark/paradox/dist/core/model/schema/city/City";
 import Quantity from "@thetinyspark/paradox/dist/core/model/schema/resources/Quantity";
 import { StateCreator } from "zustand";
-import { Cell } from "../type";
+import { Cell, Tile } from "../type";
 import { BoundStore } from "./BoundStore";
 
 export type PlayerSlice = {
@@ -17,6 +17,11 @@ export type PlayerSlice = {
   setGameMap: (gameMap: Cell[][]) => void;
   setIsFirstLoad: (isFirstLoad: boolean) => void;
   initialiseMap: () => void;
+  updateTileMap: (
+    tile: Tile,
+    buildingID: number,
+    tplBuildingID: number
+  ) => void;
 };
 
 export const createPlayerSlice: StateCreator<
@@ -65,5 +70,21 @@ export const createPlayerSlice: StateCreator<
       });
       set({ gameMap: newMap });
     }
+  },
+  updateTileMap: (tile: Tile, buildingID: number, tplID: number) => {
+    console.log("updateTileMap");
+    const { gameMap } = get();
+
+    const newMap: Cell[][] = gameMap;
+    console.log(tile);
+
+    if (tile.x !== null && tile.y !== null) {
+      newMap[tile.x][tile.y] = {
+        buildingId: buildingID,
+        templateBuilding: tplID,
+      };
+    }
+
+    set({ gameMap: newMap });
   },
 });

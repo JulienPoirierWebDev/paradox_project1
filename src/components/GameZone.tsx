@@ -4,6 +4,7 @@ import BuildingList from "./BuildingList";
 import RessourceList from "./RessourceList";
 import GameMap from "./GameMap";
 import useBoundStore from "../store/BoundStore";
+import { CONSTANTS } from "../utils/gameData";
 
 export default function GameZone({
   gameState,
@@ -35,7 +36,7 @@ export default function GameZone({
       doCycle();
       getWalletFromEngine();
       getPlayerFromEngine();
-    }, 5000);
+    }, CONSTANTS.CYCLE_DURATION);
 
     return () => {
       clearInterval(doCycleInterval);
@@ -75,11 +76,25 @@ export default function GameZone({
       <BuildingList buildings={productionUnits} />
 
       {player ? (
-        <div>
-          <h2>Map</h2>
+        <>
+          <div>
+            <h2>Buildings</h2>
+            <p>
+              {player.buildings.map((building) => {
+                return (
+                  <p>
+                    {building.id} || {building.name} || {building.tplBuildingID}
+                  </p>
+                );
+              })}
+            </p>
+          </div>
+          <div>
+            <h2>Map</h2>
 
-          <GameMap map={gameMap} />
-        </div>
+            <GameMap map={gameMap} />
+          </div>
+        </>
       ) : null}
     </div>
   );
