@@ -2,9 +2,8 @@ import { engine } from "@thetinyspark/paradox";
 import City from "@thetinyspark/paradox/dist/core/model/schema/city/City";
 import Quantity from "@thetinyspark/paradox/dist/core/model/schema/resources/Quantity";
 import { StateCreator } from "zustand";
-import { EngineActionSlice } from "./EngineActionSlice";
-import { GameLoreSlice } from "./GameLoreSlice";
 import { Cell } from "../type";
+import { BoundStore } from "./BoundStore";
 
 export type PlayerSlice = {
   player: City | undefined;
@@ -21,7 +20,7 @@ export type PlayerSlice = {
 };
 
 export const createPlayerSlice: StateCreator<
-  EngineActionSlice & GameLoreSlice & PlayerSlice,
+  BoundStore,
   [],
   [],
   PlayerSlice

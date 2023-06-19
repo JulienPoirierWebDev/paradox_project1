@@ -35,7 +35,7 @@ export default function GameZone({
       doCycle();
       getWalletFromEngine();
       getPlayerFromEngine();
-    }, 1000);
+    }, 5000);
 
     return () => {
       clearInterval(doCycleInterval);

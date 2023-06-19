@@ -1,9 +1,8 @@
 import { StateCreator } from "zustand";
-import { PlayerSlice } from "./PlayerSlice";
 import { engine } from "@thetinyspark/paradox";
 import TemplateBuilding from "@thetinyspark/paradox/dist/core/model/schema/building/TemplateBuilding";
 import Resource from "@thetinyspark/paradox/dist/core/model/schema/resources/Resource";
-import { EngineActionSlice } from "./EngineActionSlice";
+import { BoundStore } from "./BoundStore";
 
 export type GameLoreSlice = {
   ressources: Resource[];
@@ -13,7 +12,7 @@ export type GameLoreSlice = {
 };
 
 export const createGameLoreSlice: StateCreator<
-  EngineActionSlice & GameLoreSlice & PlayerSlice,
+  BoundStore,
   [],
   [],
   GameLoreSlice
@@ -22,8 +21,6 @@ export const createGameLoreSlice: StateCreator<
   productionUnits: [],
   getRessourcesFromEngine: async () => {
     const ressources = await engine.getResources();
-    console.log(ressources);
-
     set({ ressources });
   },
   getProductionUnitsFromEngine: async () => {

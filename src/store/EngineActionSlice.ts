@@ -1,8 +1,7 @@
 import { engine } from "@thetinyspark/paradox";
 import { StateCreator } from "zustand";
 import { data } from "../assets/data2";
-import { PlayerSlice } from "./PlayerSlice";
-import { GameLoreSlice } from "./GameLoreSlice";
+import { BoundStore } from "./BoundStore";
 
 export type EngineActionSlice = {
   doCycle: () => void;
@@ -10,7 +9,7 @@ export type EngineActionSlice = {
 };
 
 export const createEngineActionSlice: StateCreator<
-  EngineActionSlice & GameLoreSlice & PlayerSlice,
+  BoundStore,
   [],
   [],
   EngineActionSlice

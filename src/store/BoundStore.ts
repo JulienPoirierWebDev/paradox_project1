@@ -5,13 +5,18 @@ import {
 } from "./EngineActionSlice";
 import { GameLoreSlice, createGameLoreSlice } from "./GameLoreSlice";
 import { PlayerSlice, createPlayerSlice } from "./PlayerSlice";
+import { UserActionSlice, createUserActionSlice } from "./UserActionSlice";
 
-const useBoundStore = create<EngineActionSlice & GameLoreSlice & PlayerSlice>(
-  (...a) => ({
-    ...createEngineActionSlice(...a),
-    ...createGameLoreSlice(...a),
-    ...createPlayerSlice(...a),
-  })
-);
+export type BoundStore = EngineActionSlice &
+  GameLoreSlice &
+  PlayerSlice &
+  UserActionSlice;
+
+const useBoundStore = create<BoundStore>((...a) => ({
+  ...createEngineActionSlice(...a),
+  ...createGameLoreSlice(...a),
+  ...createPlayerSlice(...a),
+  ...createUserActionSlice(...a),
+}));
 
 export default useBoundStore;

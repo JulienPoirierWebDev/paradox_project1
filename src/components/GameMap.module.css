@@ -15,3 +15,7 @@
 .empty {
   background-color: chocolate;
 }
+
+.clicked {
+  background-color: green;
+}
