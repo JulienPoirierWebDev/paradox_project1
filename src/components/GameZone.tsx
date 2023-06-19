@@ -1,9 +1,9 @@
 import { useEffect } from "react";
-import { useGameContext } from "../hooks/UseGameContext";
 import { GameStates } from "../utils/gameStates";
 import BuildingList from "./BuildingList";
 import RessourceList from "./RessourceList";
 import GameMap from "./GameMap";
+import useBoundStore from "../store/BoundStore";
 
 export default function GameZone({
   gameState,
@@ -18,21 +18,23 @@ export default function GameZone({
 }) {
   const {
     doCycle,
-    getPlayer,
-    getWallet,
+    getPlayerFromEngine,
+    getWalletFromEngine,
+    getRessourcesFromEngine,
+    getProductionUnitsFromEngine,
     wallet,
     player,
     ressources,
     productionUnits,
     gameMap,
     initialiseMap,
-  } = useGameContext();
+  } = useBoundStore();
 
   useEffect(() => {
     const doCycleInterval = setInterval(() => {
       doCycle();
-      getWallet();
-      getPlayer();
+      getWalletFromEngine();
+      getPlayerFromEngine();
     }, 1000);
 
     return () => {
@@ -41,6 +43,11 @@ export default function GameZone({
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [gameState]);
+
+  useEffect(() => {
+    getRessourcesFromEngine();
+    getProductionUnitsFromEngine();
+  }, [getRessourcesFromEngine, getProductionUnitsFromEngine]);
 
   useEffect(() => {
     wallet?.map((ressourceQuantity) => {

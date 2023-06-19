@@ -1,4 +1,4 @@
-import { Cell } from "../context/GameContext";
+import { Cell } from "../type";
 import styles from "./GameMap.module.css";
 
 export default function GameMap({ map }: { map: Cell[][] }) {
