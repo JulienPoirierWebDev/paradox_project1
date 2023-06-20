@@ -1,5 +1,6 @@
 .map {
-  display: flex;
+  display: inline-flex;
+  position: relative;
 }
 
 .cell {
@@ -21,4 +22,9 @@
 
 .clicked {
   background-color: green;
+}
+
+.infos {
+  position: absolute;
+  background-color: aliceblue;
 }
