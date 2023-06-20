@@ -1,6 +1,7 @@
 import { Cell } from "../type";
 import styles from "./GameMap.module.css";
 import useBoundStore from "../store/BoundStore";
+import { useRessources } from "../hooks/useRessources";
 
 export default function GameMap({ map }: { map: Cell[][] }) {
   const {
@@ -15,9 +16,10 @@ export default function GameMap({ map }: { map: Cell[][] }) {
     productionUnits,
   } = useBoundStore();
 
+  const { isEnoughRessourcesToBuild } = useRessources();
+
   const handleClick = (cellIndex: number, rowIndex: number) => {
     {
-      console.log("Clicked cell", cellIndex, rowIndex);
       setTileSelected({ x: cellIndex, y: rowIndex });
       if (templateBuildingIdToBuild !== -1) {
         console.log(
@@ -28,11 +30,14 @@ export default function GameMap({ map }: { map: Cell[][] }) {
           rowIndex
         );
 
-        console.log("newBuilding", nextBuildingId, templateBuildingIdToBuild);
         if (
           templateBuildingIdToBuild &&
           nextBuildingId &&
-          isEnoughRessourcesToBuild(templateBuildingIdToBuild)
+          isEnoughRessourcesToBuild(
+            templateBuildingIdToBuild,
+            productionUnits,
+            wallet
+          )
         ) {
           build(templateBuildingIdToBuild);
 
@@ -47,24 +52,6 @@ export default function GameMap({ map }: { map: Cell[][] }) {
         setTileSelected({ x: null, y: null });
       }
     }
-  };
-
-  const isEnoughRessourcesToBuild = (tplID: number) => {
-    const tplBuilding = productionUnits.filter((p) => p.id === tplID)[0];
-    const tplBuildingCost = tplBuilding.levels[0].cost.get();
-
-    let enoughRessources = true;
-
-    tplBuildingCost.forEach((cost) => {
-      const ressource = wallet?.filter(
-        (element) => element.resourceID === cost.resourceID
-      );
-      if (ressource && ressource[0].amount < cost.amount) {
-        enoughRessources = false;
-      }
-    });
-
-    return enoughRessources;
   };
 
   const cells = map.map((row, rowIndex) => {
