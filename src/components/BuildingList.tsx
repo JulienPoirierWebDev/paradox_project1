@@ -48,23 +48,21 @@ export default function BuildingList({
 
   const buildingHtml = playerBuildings.map((building) => {
     return (
-      <>
-        <p key={building.id}>
-          {building.name}
-          {constructableBuildingsId.includes(building) ? (
-            <>
-              -{" "}
-              <span
-                onClick={() => {
-                  handleConstruct(building);
-                }}
-              >
-                Construire
-              </span>
-            </>
-          ) : null}
-        </p>
-      </>
+      <p key={building.id}>
+        {building.name}
+        {constructableBuildingsId.includes(building) ? (
+          <>
+            -{" "}
+            <span
+              onClick={() => {
+                handleConstruct(building);
+              }}
+            >
+              Construire
+            </span>
+          </>
+        ) : null}
+      </p>
     );
   });
 

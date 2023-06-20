@@ -11,6 +11,8 @@ export type UserActionSlice = {
   setCurrentAction: (action: "build" | "move") => void;
   templateBuildingIdToBuild: number | null;
   setTemplateBuildingIdToBuild: (id: number | null) => void;
+  tileOver: Tile;
+  setTileOver: (tile: Tile) => void;
 };
 
 export const createUserActionSlice: StateCreator<
@@ -26,7 +28,12 @@ export const createUserActionSlice: StateCreator<
     x: null,
     y: null,
   },
+  tileOver: {
+    x: null,
+    y: null,
+  },
   setTileSelected: (tileSelected) => set({ tileSelected }),
+  setTileOver: (tileOver) => set({ tileOver }),
   currentAction: "move",
   setCurrentAction: (currentAction) => set({ currentAction }),
   templateBuildingIdToBuild: null,

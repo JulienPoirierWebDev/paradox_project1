@@ -16,7 +16,7 @@ export const useRessources = () => {
       const ressource = wallet?.filter(
         (element) => element.resourceID === cost.resourceID
       );
-      if (ressource && ressource[0].amount < cost.amount) {
+      if (ressource && ressource[0]?.amount < cost.amount) {
         enoughRessources = false;
       }
     });

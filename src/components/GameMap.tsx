@@ -14,6 +14,8 @@ export default function GameMap({ map }: { map: Cell[][] }) {
     updateTileMap,
     wallet,
     productionUnits,
+    setTileOver,
+    tileOver,
   } = useBoundStore();
 
   const { isEnoughRessourcesToBuild } = useRessources();
@@ -46,10 +48,10 @@ export default function GameMap({ map }: { map: Cell[][] }) {
             nextBuildingId,
             templateBuildingIdToBuild
           );
-        }
 
-        setCurrentAction("move");
-        setTileSelected({ x: null, y: null });
+          setCurrentAction("move");
+          setTileSelected({ x: null, y: null });
+        }
       }
     }
   };
@@ -62,6 +64,10 @@ export default function GameMap({ map }: { map: Cell[][] }) {
 
           if (tileSelected?.x === cellIndex && tileSelected?.y === rowIndex) {
             style += " " + styles.clicked;
+          }
+
+          if (tileOver?.x === cellIndex && tileOver?.y === rowIndex) {
+            style += " " + styles.over;
           }
 
           if (cell.buildingId === -1) {
@@ -85,6 +91,9 @@ export default function GameMap({ map }: { map: Cell[][] }) {
               key={cellIndex}
               className={style}
               onClick={() => handleClick(cellIndex, rowIndex)}
+              onMouseEnter={() => {
+                setTileOver({ x: cellIndex, y: rowIndex });
+              }}
             >
               {building}
             </div>

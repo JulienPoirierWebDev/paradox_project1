@@ -124,4 +124,5 @@ export const data: GameSaveDescType = {
 
 export const CONSTANTS = {
   CYCLE_DURATION: 1000,
+  MAP_SIZE: 9,
 };

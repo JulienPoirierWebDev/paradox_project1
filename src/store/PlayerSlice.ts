@@ -4,6 +4,7 @@ import Quantity from "@thetinyspark/paradox/dist/core/model/schema/resources/Qua
 import { StateCreator } from "zustand";
 import { Cell, Tile } from "../type";
 import { BoundStore } from "./BoundStore";
+import { CONSTANTS } from "../utils/gameData";
 
 export type PlayerSlice = {
   player: City | undefined;
@@ -51,9 +52,9 @@ export const createPlayerSlice: StateCreator<
     if (isFirstLoad) {
       set({ isFirstLoad: false });
       const newMap: Cell[][] = [];
-      for (let i = 0; i < 32; i++) {
+      for (let i = 0; i < CONSTANTS.MAP_SIZE; i++) {
         newMap.push([]);
-        for (let j = 0; j < 32; j++) {
+        for (let j = 0; j < CONSTANTS.MAP_SIZE; j++) {
           newMap[i].push({
             buildingId: -1,
             templateBuilding: -1,
@@ -61,8 +62,8 @@ export const createPlayerSlice: StateCreator<
         }
       }
       player?.buildings.forEach((building) => {
-        const x = Math.round(Math.random() * 32);
-        const y = Math.round(Math.random() * 32);
+        const x = Math.round(Math.random() * CONSTANTS.MAP_SIZE);
+        const y = Math.round(Math.random() * CONSTANTS.MAP_SIZE);
         newMap[x][y] = {
           buildingId: building.id,
           templateBuilding: building.tplBuildingID,
