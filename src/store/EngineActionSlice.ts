@@ -31,7 +31,6 @@ export const createEngineActionSlice: StateCreator<
       cityID: cityID,
       tplID: id,
     };
-
     engine.buyBuilding(data);
   },
 });
