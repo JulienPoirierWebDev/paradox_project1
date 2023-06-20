@@ -8,6 +8,7 @@ export default function GameMap({ map }: { map: Cell[][] }) {
     tileSelected,
     setTileSelected,
     templateBuildingIdToBuild,
+    setTemplateBuildingIdToBuild,
     setCurrentAction,
     build,
     nextBuildingId,
@@ -51,6 +52,7 @@ export default function GameMap({ map }: { map: Cell[][] }) {
 
           setCurrentAction("move");
           setTileSelected({ x: null, y: null });
+          setTemplateBuildingIdToBuild(-1);
         }
       }
     }
