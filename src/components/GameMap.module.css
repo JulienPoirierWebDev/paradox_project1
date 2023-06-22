@@ -2,29 +2,3 @@
   display: inline-flex;
   position: relative;
 }
-
-.cell {
-  width: 20px;
-  aspect-ratio: 1;
-  border: 2px solid black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.empty {
-  background-color: chocolate;
-}
-
-.over {
-  background-color: lightgreen;
-}
-
-.clicked {
-  background-color: green;
-}
-
-.infos {
-  position: absolute;
-  background-color: aliceblue;
-}
