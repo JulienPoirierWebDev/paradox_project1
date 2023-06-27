@@ -1,6 +1,7 @@
 import { useState } from "react";
 import GameZone from "../components/GameZone";
 import { GameStates } from "../utils/gameStates";
+import styles from "./Game.module.css";
 
 export default function Game({
   gameState,
@@ -19,7 +20,7 @@ export default function Game({
   }
 
   return (
-    <div className={"container"}>
+    <div className={styles.container}>
       <h1>Surviving Mars</h1>
       <p onClick={handleGoToMenu}>Go to menu</p>
       <GameZone

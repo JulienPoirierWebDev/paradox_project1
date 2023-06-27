@@ -1,0 +1,15 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 10px;
+  max-width: 700px;
+  padding: 0;
+  margin: auto;
+  padding: 30px;
+  background-color: #998888;
+}
+
+body {
+  background-color: rgb(104, 7, 7);
+  margin: 0;
+}

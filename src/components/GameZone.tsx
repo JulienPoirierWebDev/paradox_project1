@@ -76,7 +76,7 @@ export default function GameZone({
         ) : null}
       </div>
       <div className="UI-section">
-        <h2>Buildings to build</h2>
+        <h2>Build</h2>
         <BuildingList buildings={productionUnits} />
       </div>
 
