@@ -1,6 +1,7 @@
 import TemplateBuilding from "@thetinyspark/paradox/dist/core/model/schema/building/TemplateBuilding";
 import useBoundStore from "../../store/BoundStore";
 import { useRessources } from "../../hooks/useRessources";
+import styles from "./BuildingList.module.css";
 
 export default function BuildingList({
   buildings,
@@ -24,22 +25,6 @@ export default function BuildingList({
     return constructableId.includes(building.id);
   });
 
-  const constructableBuildingsId = buildings.filter((building) => {
-    if (!constructableId.includes(building.id)) {
-      return;
-    }
-
-    const isEnoughRessources = isEnoughRessourcesToBuild(
-      building.id,
-      productionUnits,
-      wallet
-    );
-
-    if (isEnoughRessources) {
-      return building;
-    }
-  });
-
   function handleConstruct(building: TemplateBuilding): void {
     setTileSelected({ x: null, y: null });
     setCurrentAction("build");
@@ -47,27 +32,41 @@ export default function BuildingList({
   }
 
   const buildingHtml = playerBuildings.map((building) => {
+    let buildingSpan = null;
+
+    if (!isEnoughRessourcesToBuild(building.id, productionUnits, wallet)) {
+      buildingSpan = (
+        <span className={`${styles.building_span} ${styles.disable}`}>
+          Construire
+        </span>
+      );
+    } else {
+      buildingSpan = (
+        <span
+          className={`${styles.building_span} ${styles.enable}`}
+          onClick={() => {
+            handleConstruct(building);
+          }}
+        >
+          Construire
+        </span>
+      );
+    }
+
     return (
-      <p key={building.id}>
-        {building.name}
-        {constructableBuildingsId.includes(building) ? (
-          <>
-            -{" "}
-            <span
-              onClick={() => {
-                handleConstruct(building);
-              }}
-            >
-              Construire
-            </span>
-          </>
-        ) : null}
-      </p>
+      <div className={styles.building_item}>
+        <div>
+          <p key={building.id}>{building.id}</p>
+        </div>
+        <div>
+          <p> {buildingSpan}</p>
+        </div>
+      </div>
     );
   });
 
   return (
-    <div>
+    <div className={styles.buildings_container}>
       {buildingHtml}
       {currentAction === "build" ? (
         <p>Choisissez une case sur laquelle construire</p>

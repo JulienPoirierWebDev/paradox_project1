@@ -1,0 +1,39 @@
+.buildings_container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 10px;
+  max-width: 700px;
+  padding: 0;
+}
+
+.building_item {
+  border: 1px solid black;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.building_item > * {
+  margin-right: 0;
+}
+
+.building_span {
+  margin: auto;
+  padding: 10px;
+}
+
+.enable {
+  background-color: #4caf50;
+  color: white;
+}
+
+.enable:hover {
+  background-color: #46a049;
+}
+
+.disable {
+  background-color: #ccc;
+  color: #888;
+}
