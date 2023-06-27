@@ -1,6 +1,7 @@
 import Resource from "@thetinyspark/paradox/dist/core/model/schema/resources/Resource";
 import RessourceQuantity from "./RessourceQuantity";
 import Quantity from "@thetinyspark/paradox/dist/core/model/schema/resources/Quantity";
+import styles from "./RessourceList.module.css";
 
 export default function RessourceList({
   resources,
@@ -27,7 +28,7 @@ export default function RessourceList({
   });
 
   return (
-    <ul>
+    <ul className={styles.ressourceList}>
       {ressourceQuantityArr.map((ressourceQuantity) => ressourceQuantity)}
     </ul>
   );

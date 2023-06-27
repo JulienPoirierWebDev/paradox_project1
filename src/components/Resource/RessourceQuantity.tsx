@@ -1,3 +1,5 @@
+import styles from "./RessourceQuantity.module.css";
+
 export default function RessourceQuantity({
   id,
   name,
@@ -8,8 +10,8 @@ export default function RessourceQuantity({
   amount: number;
 }) {
   return (
-    <li>
-      {name} : {amount}
+    <li className={styles.ressource}>
+      {id + " - " + name} : {amount}
     </li>
   );
 }
