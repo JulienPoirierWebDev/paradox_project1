@@ -56,7 +56,11 @@ export default function BuildingList({
     return (
       <div className={styles.building_item}>
         <div>
-          <p key={building.id}>{building.id}</p>
+          <img className={styles.img} src={`src/assets/${building.id}.png`} />
+          <p className={styles.name} key={building.id}>
+            {" "}
+            {building.name}
+          </p>
         </div>
         <div>
           <p> {buildingSpan}</p>

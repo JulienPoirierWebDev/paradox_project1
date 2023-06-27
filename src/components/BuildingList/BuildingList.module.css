@@ -19,8 +19,11 @@
   margin-right: 0;
 }
 
+.name {
+  display: inline-block;
+}
+
 .building_span {
-  margin: auto;
   padding: 10px;
 }
 
@@ -36,4 +39,11 @@
 .disable {
   background-color: #ccc;
   color: #888;
+}
+
+.img {
+  width: 50px;
+  height: 50px;
+  vertical-align: middle;
+  margin-right: 10px;
 }
