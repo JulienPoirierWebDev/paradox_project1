@@ -18,7 +18,7 @@ export const data: GameSaveDescType = {
   ],
   resources: [
     { id: 1, name: "oxygène" },
-    { id: 2, name: "Minerais" },
+    { id: 2, name: "minerai" },
     { id: 3, name: "Stabilité psychologique" },
   ],
   templateBuildings: [
