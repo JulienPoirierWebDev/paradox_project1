@@ -1,8 +1,8 @@
-import { Cell } from "../type";
+import { Cell } from "../../type";
 import styles from "./GameMap.module.css";
 import { useRef, useState } from "react";
-import Tile from "./Tile";
-import HoverTileInfo from "./HoverTileInfo";
+import HoverTileInfo from "../HoverTileInfo/HoverTileInfo";
+import Tile from "../Tile/Tile";
 
 export default function GameMap({ map }: { map: Cell[][] }) {
   const mapRef = useRef<HTMLDivElement>(null);

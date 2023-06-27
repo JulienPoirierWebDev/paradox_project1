@@ -20,7 +20,7 @@ export default function Game({
 
   return (
     <div className={"container"}>
-      <h1>Game</h1>
+      <h1>Surviving Mars</h1>
       <p onClick={handleGoToMenu}>Go to menu</p>
       <GameZone
         gameState={gameState}

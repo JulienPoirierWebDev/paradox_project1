@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { GameStates } from "../utils/gameStates";
-import BuildingList from "./BuildingList";
-import RessourceList from "./RessourceList";
-import GameMap from "./GameMap";
+import BuildingList from "./BuildingList/BuildingList";
+import GameMap from "./GameMap/GameMap";
 import useBoundStore from "../store/BoundStore";
 import { CONSTANTS } from "../utils/gameData";
+import RessourceList from "./Resource/RessourceList";
 
 export default function GameZone({
   gameState,
@@ -69,11 +69,16 @@ export default function GameZone({
 
   return (
     <div>
-      <p>Paradox game test</p>
-      <h2>{player?.name}</h2>
-      {player ? <RessourceList resources={ressources} wallet={wallet} /> : null}
-      <h2>Buildings to build</h2>
-      <BuildingList buildings={productionUnits} />
+      <div className="UI-section">
+        <h2 className="title">Resources</h2>
+        {player ? (
+          <RessourceList resources={ressources} wallet={wallet} />
+        ) : null}
+      </div>
+      <div className="UI-section">
+        <h2>Buildings to build</h2>
+        <BuildingList buildings={productionUnits} />
+      </div>
 
       {player ? (
         <>

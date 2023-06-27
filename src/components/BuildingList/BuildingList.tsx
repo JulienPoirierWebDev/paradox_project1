@@ -1,6 +1,6 @@
 import TemplateBuilding from "@thetinyspark/paradox/dist/core/model/schema/building/TemplateBuilding";
-import useBoundStore from "../store/BoundStore";
-import { useRessources } from "../hooks/useRessources";
+import useBoundStore from "../../store/BoundStore";
+import { useRessources } from "../../hooks/useRessources";
 
 export default function BuildingList({
   buildings,

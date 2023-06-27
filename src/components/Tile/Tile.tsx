@@ -1,6 +1,6 @@
-import { useRessources } from "../hooks/useRessources";
-import useBoundStore from "../store/BoundStore";
-import { Cell } from "../type";
+import { useRessources } from "../../hooks/useRessources";
+import useBoundStore from "../../store/BoundStore";
+import { Cell } from "../../type";
 import styles from "./Tile.module.css";
 
 export default function Tile({
